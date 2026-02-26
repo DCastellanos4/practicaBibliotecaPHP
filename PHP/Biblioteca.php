@@ -17,14 +17,14 @@ class Biblioteca
     public function addDocument($doc)
     {
         if ($doc != null) {
-            $this->documentos = $doc;
+            $this->documentos[] = $doc;
             $this->numDocus++;
         }
     }
     public function addUser($user)
     {
         if ($user != null) {
-            $this->usuarios = $user;
+            $this->usuarios[] = $user;
             $this->numUsu++;
         }
     }
@@ -71,13 +71,38 @@ class Biblioteca
         }
         return null;
     }
-    public function showHandedReport(){
+    public function showHandedReport()
+    {
         echo "Lista de documentos prestados";
-        for ($x=0; $x < $this->numDocus; $x++) {
-            if($this->documentos[$x]->estaPrestado()){
+        echo "<br>";
+
+        for ($x = 0; $x < $this->numDocus; $x++) {
+            if ($this->documentos[$x]->estaPrestado()) {
                 echo $this->documentos[$x];
+                echo "<br>---";
+                echo "<br>";
             }
         }
         echo "Fin lista";
+    }
+
+    /**
+     * Get the value of maxUsuarios
+     */
+    public function getMaxUsuarios()
+    {
+        return $this->maxUsuarios;
+    }
+
+    /**
+     * Set the value of maxUsuarios
+     *
+     * @return  self
+     */
+    public function setMaxUsuarios($maxUsuarios)
+    {
+        $this->maxUsuarios = $maxUsuarios;
+
+        return $this;
     }
 }

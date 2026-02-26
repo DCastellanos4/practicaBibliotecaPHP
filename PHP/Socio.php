@@ -9,7 +9,7 @@ spl_autoload_register(function ($clase) {
 class Socio extends Usuario {
     private static $maxPrestamosASocios=20;
     private static $limitePrestamosASocios=30;
-    public function __construct($DNI, $NOMBRE, $MAXPRESTAMOS, $LIMITEPRESTAMOS)
+    public function __construct($DNI, $NOMBRE)
     {
         return parent::__construct($DNI, $NOMBRE, self::$maxPrestamosASocios,self::$limitePrestamosASocios);
     }

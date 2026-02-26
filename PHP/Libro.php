@@ -27,12 +27,12 @@ class Libro extends Documento
         $this->anioPublicacion = $anioPublicacion;
     }
 
-    /**
-     * Representación en cadena del objeto
-     */
     public function __toString()
     {
-        // Concatenamos el toString del padre con el dato local
-        return parent::__toString() . " Año publicación: " . $this->anioPublicacion;
+        return parent::__toString() . "<br> Año de publicación: " . $this->anioPublicacion;
+    }
+    public function getCodigo()
+    {
+        return parent::getCodigo();
     }
 }

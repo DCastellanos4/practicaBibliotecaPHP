@@ -6,9 +6,9 @@ spl_autoload_register(function ($clase) {
     }
 });
 class UsuarioOcasional extends Usuario{
-    private $maxPrestamosAUsuarios=2;
-    private $limitePrestamosAUsuarios=15;
-    public function __construct($DNI, $NOMBRE, $MAXPRESTAMOS, $LIMITEPRESTAMOS)
+    private static $maxPrestamosAUsuarios=2;
+    private static $limitePrestamosAUsuarios=15;
+    public function __construct($DNI, $NOMBRE)
     {
         return parent::__construct($DNI, $NOMBRE, self::$maxPrestamosAUsuarios, self::$limitePrestamosAUsuarios);
     }
