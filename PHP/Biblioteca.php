@@ -14,11 +14,16 @@ class Biblioteca
         $this->numUsu = 0;
         $this->numDocus = 0;
     }
-    public function addDocument($doc)
+    public function addDocument($cod, $tit, $tipo, $anio)
     {
-        if ($doc != null) {
-            $this->documentos[] = $doc;
-            $this->numDocus++;
+        require_once 'funciones.php';
+        try {
+            $con = conectar();
+            $stmt = $con->prepare("INSERT INTO documentos (codigo, titulo, tipo,anio)
+            VALUES (:cod, :tit, :tip,:anio)");
+            $stmt->execute([":cod" => $cod, ":tit" => $tit, ":tip" => $tipo, ":anio" => $anio]);
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
     }
     public function addUser($user)

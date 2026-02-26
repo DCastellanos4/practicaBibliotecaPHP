@@ -29,7 +29,13 @@
                 echo "<br><br>";
             }
         }
+        if (isset($_GET['tipoDoc'])) {
+            $tipo = $_GET['tipoDoc'];
+        } else {
+            $tipo = null;
+        }
         ?>
+        <input type="hidden" name="tipoDoc" value="<?php echo $tipo; ?>">
         <input type="submit" name="enviar" value="Enviar datos">
     </form>
     <?php
@@ -39,10 +45,21 @@
             require_once $archivo;
         }
     });
-    $b=new Biblioteca();
-    echo $_POST['codigo'];
-    echo $_POST['titulo'];
-    echo $_POST['anio'];
+    $b = new Biblioteca();
+    if (isset($_POST['anio'])) {
+        $anio = $_POST['anio'];
+    } else {
+        $anio = null;
+    }
+
+    if (isset($_POST['tipoDoc'])) {
+        $tipoDoc = $_POST['tipoDoc'];
+    }
+    if (isset($_POST['enviar']) && isset($_POST['tipoDoc'])) {
+        $b->addDocument($_POST['codigo'], $_POST['titulo'], $tipoDoc, $anio);
+    } else {
+        // echo '<p style="color:red">Selecciona el tipo de documento a introducir</p>';
+    }
     ?>
     <br>
     <a href="GestionaBiblioteca.php">[Volver]</a>

@@ -22,7 +22,7 @@
 // $b->showHandedReport();
 //2 formularios 1 para recoger socios otro para recoger libros
 // otro para dar y recoger libros
-//BBDD para guarda la informacion
+//BBDD para guardar la informacion
 ?>
 <!DOCTYPE html>
 <html lang="en">
