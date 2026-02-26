@@ -22,6 +22,11 @@ class Biblioteca
             $stmt = $con->prepare("INSERT INTO documentos (codigo, titulo, tipo,anio)
             VALUES (:cod, :tit, :tip,:anio)");
             $stmt->execute([":cod" => $cod, ":tit" => $tit, ":tip" => $tipo, ":anio" => $anio]);
+        echo "<p style='color:green'>Introducido<br>
+                                    CODIGO: $cod<br>
+                                    TITULO: $tit<br>
+                                    TIPO: $tipo<br>
+                                    AÑO: $anio</p>";
         } catch (Exception $e) {
             echo $e->getMessage();
         }

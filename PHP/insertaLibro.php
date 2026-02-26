@@ -14,7 +14,7 @@
             <option>Libro</option>
             <option>Revista</option>
         </select>
-        <input type="submit" name="enviar" value="Seleccionar tipo de documento">
+        <input type="submit" name="enviarTipo" value="Seleccionar tipo de documento">
     </form>
     <br><br>
     <form method="POST" action="insertaLibro.php">
@@ -55,10 +55,14 @@
     if (isset($_POST['tipoDoc'])) {
         $tipoDoc = $_POST['tipoDoc'];
     }
-    if (isset($_POST['enviar']) && isset($_POST['tipoDoc'])) {
-        $b->addDocument($_POST['codigo'], $_POST['titulo'], $tipoDoc, $anio);
-    } else {
-        // echo '<p style="color:red">Selecciona el tipo de documento a introducir</p>';
+    if (isset($_POST['enviar'])) {
+        if (!empty($_POST['tipoDoc']) && !empty($_POST['codigo']) && !empty($_POST['titulo'])) {
+            $b->addDocument($_POST['codigo'], $_POST['titulo'], $tipoDoc, $anio);
+        } else {
+            echo '<p style="color:red">Rellena todos los datos</p>';
+        }
+    } else if (!isset($_GET['tipoDoc'])) {
+        echo '<p style="color:red">Selecciona el tipo</p>';
     }
     ?>
     <br>
