@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 26-02-2026 a las 12:44:31
--- Versión del servidor: 8.0.44-0ubuntu0.24.04.1
+-- Tiempo de generación: 27-02-2026 a las 15:15:17
+-- Versión del servidor: 8.0.45-0ubuntu0.24.04.1
 -- Versión de PHP: 8.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -34,6 +34,19 @@ CREATE TABLE `documentos` (
   `anio` varchar(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `documentos`
+--
+
+INSERT INTO `documentos` (`codigo`, `titulo`, `tipo`, `anio`) VALUES
+('001', 'Leyenda', 'Libro', '1990'),
+('002', 'Revista Corazón', 'Revista', NULL),
+('003', 'Revista Loca', 'Revista', NULL),
+('004', 'El mejor Libro', 'Libro', '1250'),
+('005', 'El gran Libro', 'Libro', '1999'),
+('006', 'Revista Normalilla', 'Revista', NULL),
+('007', 'Agente 007', 'Libro', '2005');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +59,13 @@ CREATE TABLE `prestamos` (
   `fechaEntrega` date NOT NULL,
   `fechaDevolucion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `prestamos`
+--
+
+INSERT INTO `prestamos` (`dniUsuario`, `codigoLibro`, `fechaEntrega`, `fechaDevolucion`) VALUES
+('11A', '001', '2026-02-27', '2026-02-28');
 
 -- --------------------------------------------------------
 
@@ -62,6 +82,14 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`dni`, `nombre`, `tipo`, `numPrestamos`, `maxPrestamos`) VALUES
+('11A', 'Juan', 'Usuario Ocasional', 0, 2),
+('1234A', 'David', 'Socio', 0, 250);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -75,6 +103,7 @@ ALTER TABLE `documentos`
 -- Indices de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
+  ADD PRIMARY KEY (`dniUsuario`,`codigoLibro`,`fechaEntrega`),
   ADD KEY `fk_usuario` (`dniUsuario`),
   ADD KEY `fk_libro` (`codigoLibro`);
 
