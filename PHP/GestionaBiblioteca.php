@@ -40,6 +40,8 @@
     <a href="insertaUsuario.php"><button>Introducir usuario</button></a>
     <br><br>
     <a href="gestionaPrestamos.php"><button>Gestión de prestamos</button></a>
+    <br><br>
+    <a href="darPrestamos.php"><button>Dar prestamos</button></a>
 </body>
 
 </html>

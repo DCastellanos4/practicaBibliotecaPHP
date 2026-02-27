@@ -45,7 +45,6 @@
             require_once $archivo;
         }
     });
-    $b = new Biblioteca();
     if (isset($_POST['anio'])) {
         $anio = $_POST['anio'];
     } else {
@@ -56,6 +55,7 @@
         $tipoDoc = $_POST['tipoDoc'];
     }
     if (isset($_POST['enviar'])) {
+        $b = new Biblioteca();
         if (!empty($_POST['tipoDoc']) && !empty($_POST['codigo']) && !empty($_POST['titulo'])) {
             $b->addDocument($_POST['codigo'], $_POST['titulo'], $tipoDoc, $anio);
         } else {
